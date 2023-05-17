@@ -1,0 +1,61 @@
+<div mat-dialog-title>
+    <h1>Expense Form</h1>
+</div>
+
+<form [formGroup]="expenseForm" (ngSubmit)="onFormSubmit()">
+    <input type="hidden" formControlName="date" />
+    <div mat-dialog-content class="content">
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Month</mat-label>
+                <mat-select formControlName="month">
+                    <mat-option *ngFor="let val of month" [value]="val">
+                        {{val}}
+                    </mat-option>
+                </mat-select>
+                <mat-hint style="color:red"
+                    *ngIf="expenseForm.get('month')?.touched && expenseForm.get('month')?.errors?.['required']">
+                    Month is required
+                </mat-hint>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-radio-group aria-label="Select an option" formControlName="salary">
+                <mat-label><b>Salary</b></mat-label>
+                <mat-radio-button value="40143">40143</mat-radio-button>
+                <mat-radio-button value="31877">31877</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <mat-hint style="color:red"
+            *ngIf="expenseForm.get('salary')?.touched && expenseForm.get('salary')?.hasError('required')">
+            Select a salary
+        </mat-hint>
+        <div>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Expense</mat-label>
+                <input matInput placeholder="Ex. Rent" formControlName="expense">
+                <mat-hint style="color:red"
+                    *ngIf="expenseForm.get('expense')?.touched && expenseForm.get('expense')?.errors?.['required']">
+                    Expense is required
+                </mat-hint>
+            </mat-form-field>
+
+        </div>
+        <div class="row">
+            <mat-form-field appearance="outline">
+                <mat-label>Amount</mat-label>
+                <input matInput placeholder="Ex. 3000" formControlName="amount">
+                <mat-hint style="color:red"
+                    *ngIf="expenseForm.get('amount')?.touched && expenseForm.get('amount')?.errors?.['required']">
+                    Amount is required
+                </mat-hint>
+            </mat-form-field>
+        </div>
+    </div>
+    <div mat-dialog-actions class="action">
+        <button mat-raised-button color="primary" type="submit">{{data? 'Update' : 'Save'}}</button>
+        <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+    </div>
+</form>

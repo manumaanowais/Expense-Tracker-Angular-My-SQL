@@ -1,0 +1,48 @@
+mat-toolbar ul li{
+  display: inline-block;
+  padding: 20px;
+}
+
+mat-toolbar ul li select{
+  cursor: pointer;
+  background: transparent;
+  border:none;
+  outline: none;
+  font-size: 20px;
+  width:55%;
+  border-radius: 5px;
+  padding:5px;
+  color:#fff;  
+}
+
+mat-toolbar ul li select option{
+  background-color: steelblue;
+  color:white;
+}
+
+.main-body {
+  padding-top: 20px;
+  max-width: 1300x;
+  margin: 0 auto;
+}
+
+.main-body mat-form-field {
+  width: 100%;
+}
+
+
+@media only screen and (max-width: 600px) {
+  mat-toolbar{
+    height:180px;
+    width: 640px;
+  }
+
+  mat-toolbar ul li{
+    display: block;
+    padding: 4px 30px;
+  }
+
+  .main-body mat-form-field {
+    width: 140%;
+  }
+}
